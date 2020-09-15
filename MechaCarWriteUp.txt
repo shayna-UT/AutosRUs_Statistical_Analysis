@@ -1,0 +1,46 @@
+MPG REGRESSION WRITEUP:
+
+DESCRIPTION:
+
+Using the "MechaCar_mpg" dataset, a multiple linear regression model was designed (reference MechaCarChallenge.RScript) to predict the mpg of MechaCar prototypes. 
+
+BACKGROUND:
+
+The "MechaCar_mpg" dataset contains the results of mpg testing data of 50 potential MechaCar prototypes. For each prototype, multiple metrics were collected, including vehicle length, vehicle weight, 
+spoiler angle, drivetrain, and ground clearance; each metric represents a design specification that can help identify ideal vehicle performance. 
+
+Linear regressions are a statistical model used to predict a continuous dependent variable based on one or more independent variables fitted to the equation of a line. Since each recorded metric in the dataset is an independent variable of interest, a multiple linear regression will be used to predict the mpg of MechaCar prototypes. The linear regression predicts future observations by calculating the slope and y-intercept values of the linear model while minimizing the overall distance between each data point and the model. To accomplish this, the linear regression evaluates whether the value of variable "A" can be predicted by a linear model and values from variable "B" by testing the following hypotheses: 
+
+Null Hypothesis: The slope of the linear model is zero. 
+Alternative Hypothesis: The slope of the linear model is not zero. 
+
+The null hypothesis can be explained by random chance; if no significant linear relationship can be determined, then each dependent value would be determined by random chance, and our linear model would have a slope of zero.  It is possible to assess the significance of the linear relationship between variables by comparing the p-value to the significance level. A p-value illustrates the likelihood that a similar result will be observed if the data is tested again. The significance level is the predetermined cut off for the hypothesis test; for this assessment, a significance level of 0.05% will be used, meaning there is a 5 in 100 probability of being wrong. Therefore, when the p-value is less than our significance level of 0.05%, there is sufficient evidence that to reject the null hypothesis, indicating the slope of our linear model is not zero. 
+
+Also, how well the linear model can be used to predict future observations can be quantified by the r-squared value. The r-squared value (coefficient of determination) represents how well the linear model approximates future data points. Generally, the r-squared probability metric ranges between 0 and 1, where the closer the r-squared value is to 1, the stronger the correlation. 
+
+RESULTS:
+
+After adding vehicle.length, vehicle.weight, spoiler.angle, AWD (drivetrain), and ground.clearance as independent variables to the multiple linear regression model, the output produced the coefficients for each variable in the linear equation as show below:
+
+mpg = 6.267*vehicle.length + 0.001245*vehicle.weight +  0.06877*spoiler.angle + 3.546*ground.clearance + -3.411*AWD + -104.0
+
+Also, summary statistics were generated to determine which variables provide a significant contribution to the linear model. The summary outputs each variable's p-value, Pr(>|t|), which represents the probability that each coefficient contributes a random amount of variance to the model. The p-values for each variable is displayed below:
+
+Intercept: 5.08e-08 ***
+vehicle.length: 2.60e-12 ***
+vehicle.weight: 0.0776   
+spoiler.angle: 0.3069    
+ground.clearance: 5.21e-08 ***
+AWD: 0.1852  
+
+*** The vehicle length, ground clearance, and intercept p-values are smaller than our assumed significance of 0.05%. 
+
+The r-squared value of 0.7149 is displayed within the summary statistics as well.
+
+CONCLUSION/ DISCUSSION OF RESULTS:
+
+Indicated by p-values smaller than the significance level of 0.05%, the vehicle length, ground clearance, and intercept variables/ coefficients provide a non-random amount of variance to the mpg values. In other words, these variables are statistically significant. Specifically, the vehicle length and ground clearance have a significant impact on the mpg. However, the statistical significance of the intercept means other variables and factors are contributing to the variation in mpg and have not been included in the linear regression model. To better predict the mpg of the MechaCar, additional variables such as horsepower will need to be collected and analyzed. 
+
+Also, since the p-values of the vehicle length, ground clearance, and intercept are smaller than our significance level of 0.05%, there is sufficient evidence to reject the null hypothesis, meaning the slope of our linear model is not zero.
+
+Based on the summary statistics, the r-squared value is 0.7149, meaning that roughly 71.49% of all mpg predictions will be correct using this linear model. Although the model sufficiently predicts the dependent, mpg, variable, the lack of significant variables is evidence of overfitting. Therefore, even though the model performs well with the current dataset, it fails to generalize and predict future data correctly. Again, suggesting that additional variables need to be collected and analyzed. 
