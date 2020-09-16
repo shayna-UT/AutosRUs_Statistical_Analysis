@@ -1,10 +1,11 @@
 MPG REGRESSION WRITEUP:
+-------------------------------------
 
-DESCRIPTION:
+- DESCRIPTION:
 
 Using the "MechaCar_mpg" dataset, a multiple linear regression model was designed (reference MechaCarChallenge.RScript) to predict the mpg of MechaCar prototypes. 
 
-BACKGROUND:
+- BACKGROUND:
 
 The "MechaCar_mpg" dataset contains the results of mpg testing data of 50 potential MechaCar prototypes. For each prototype, multiple metrics were collected, including vehicle length, vehicle weight, 
 spoiler angle, drivetrain, and ground clearance; each metric represents a design specification that can help identify ideal vehicle performance. 
@@ -18,7 +19,7 @@ The null hypothesis can be explained by random chance; if no significant linear 
 
 Also, how well the linear model can be used to predict future observations can be quantified by the r-squared value. The r-squared value (coefficient of determination) represents how well the linear model approximates future data points. Generally, the r-squared probability metric ranges between 0 and 1, where the closer the r-squared value is to 1, the stronger the correlation. 
 
-RESULTS:
+- RESULTS:
 
 After adding vehicle.length, vehicle.weight, spoiler.angle, AWD (drivetrain), and ground.clearance as independent variables to the multiple linear regression model, the output produced the coefficients for each variable in the linear equation as show below:
 
@@ -37,7 +38,7 @@ AWD: 0.1852
 
 The r-squared value of 0.7149 is displayed within the summary statistics as well.
 
-CONCLUSION/ DISCUSSION OF RESULTS:
+- CONCLUSION/ DISCUSSION OF RESULTS:
 
 Indicated by p-values smaller than the significance level of 0.05%, the vehicle length, ground clearance, and intercept variables/ coefficients provide a non-random amount of variance to the mpg values. In other words, these variables are statistically significant. Specifically, the vehicle length and ground clearance have a significant impact on the mpg. However, the statistical significance of the intercept means other variables and factors are contributing to the variation in mpg and have not been included in the linear regression model. To better predict the mpg of the MechaCar, additional variables such as horsepower will need to be collected and analyzed. 
 
@@ -46,6 +47,7 @@ Also, since the p-values of the vehicle length, ground clearance, and intercept 
 Based on the summary statistics, the r-squared value is 0.7149, meaning that roughly 71.49% of all mpg predictions will be correct using this linear model. Although the model sufficiently predicts the dependent, mpg, variable, the lack of significant variables is evidence of overfitting. Therefore, even though the model performs well with the current dataset, it fails to generalize and predict future data correctly. Again, suggesting that additional variables need to be collected and analyzed. 
 
 SUSPENSION COIL SUMMARY WRITEUP:
+----------------------------------------------------
 
 Below are the suspension coil summary statistics generated using the "Suspension_Coil" dataset. Refer to MechaCarChallenge.RScript for an additional background as to how the summary statistics table was created. 
 
@@ -63,4 +65,55 @@ One standard deviation (µ ± σ): 1499.5 ± 8.7 PSI
 Two standard deviations (µ ± 2σ): 1499.5 ± 17.4 PSI
 Three standard deviations (µ ± 3σ): 1499.5 ± 26.1 PSI
 
-Therefore, the current manufacturing data meets the design specification of not exceeding a variance of 100 PSI. Each data point will not exceed ± 26.1 PSI from the mean. 
+Therefore, the current manufacturing data meets the design specification of not exceeding a variance of 100 PSI. Each data point will not exceed ± 26.1 PSI from the mean and remain in the range of 1473.4 PSI to 1525.6 PSI. 
+
+SUSPENSION COIL T-TEST WRITEUP:
+----------------------------------------------
+
+- DESCRIPTION:
+
+A one-sample t-test is used to assert if there is a statistical difference between the means of a sample dataset and the population dataset. Therefore, a one-sample t-test was performed if the suspension coil’s pounds-per-inch (PSI) results are statistically different from the mean population results of 1,500 PSI. 
+
+- BACKGROUND:
+
+A one-sample t-test tests the following hypotheses: 
+
+Null Hypothesis: There is no statistical difference between the observed sample mean and its population mean.
+Alternative Hypothesis: There is a statistical difference between the observed sample mean and its population mean. 
+
+Therefore, if the output of the one-sample t-test is above the assumed significance level of 0.05%, we do not have sufficient evidence to reject the null hypothesis. Thus, the two means, the sample mean and population mean, are statistically similar. 
+
+Before performing a t-test, the input data must be verified as normally distributed. There are two ways to test for normality: a qualitative and a quantitative test. The qualitative test is a visual assessment of the distribution of data using a density plot. After plotting the density plot, look for the characteristic bell curve shape across the distribution to assess whether or not it is normally distributed. The quantitative test uses a statistical test, the Shapiro-Wilk normality test, to quantify the probability of whether or not the test data came from a normally distributed dataset. Shapiro-Wilks tests the following hypotheses: 
+
+Null Hypothesis: The dataset is normally distributed. 
+Alternative Hypothesis: The dataset is not normally distributed. 
+
+Therefore, a dataset is considered to be normally distributed if the p-value is greater than the assumed significance level of 0.05%. In other words, if the p-value is more than 0.05%, the null hypothesis that the dataset is normally distributed is accepted.  
+
+- RESULTS:
+
+The dataset normality was tested both qualitatively and quantitatively. The Shapiro-Wilk test did not confirm a normal distribution; the p-value was much lower than 0.05%, therefore rejecting the null hypothesis that the dataset is normally distributed. 
+
+Since the overall dataset did not support a normal distribution, the data were filtered based on the manufacturing lot to test if maybe the data is skewed because one lot collected a different distribution of data. Then, each dataset based on the manufacturing lot (lot1, lot2, and lot3) were tested for normality. 
+
+The Shapiro-Wilk test confirmed that the lot1 dataset is not normally distributed since the p-value of 0.01091 is lower than 0.05. The density plot of lot1 confirmed the Shapiro-Wilk test and revealed that the distribution is left-skewed.
+
+For lot2 and lot3, the Shapiro-Wilk test revealed that both data sets are approximately normally distributed. Specifically, the Shapiro-Wilk test displayed a p-value of 0.3004 for lot2 and a p-value of 0.8299. Both of which are greater than 0.05%, thus accepting that the data is normally distributed. The density plots of both lot2 and lot3 also confirmed a normal distribution. 
+
+Finally, lot2 and lot3 datasets were sampled randomly, and the mean of each sample was compared to the population mean of 1,500 PSI via a one-sample t-test. 
+
+- CONCLUSION/ DISCUSSION OF RESULTS:
+
+The t-tests using lot2 and lot3 confirmed there is no statistical difference between the means of a sample dataset and the population dataset. Each test output a p-value above 0.05%. Therefore, accepting the null hypothesis that there is no statistical difference between the observed sample mean and its population mean.
+
+Manufacturing lot1 will need to be analyzed further to determine why its distribution is left-skewed. 
+
+DESIGN YOUR OWN STUDY WRITEUP:
+-------------------------------------------------
+
+Design a study that compares the performance of the MechaCar prototype vehicle to other comparable vehicles on the market/ can quantify how the MechaCar outperforms the competition. 
+
+What metrics would you think would be of interest to the consumer?
+What questions would you ask, what null and alternative hypothesis would be to answer the question, and what statistical test could be used to test this hypothesis? 
+What data should be collected? 
+
