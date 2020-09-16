@@ -44,3 +44,23 @@ Indicated by p-values smaller than the significance level of 0.05%, the vehicle 
 Also, since the p-values of the vehicle length, ground clearance, and intercept are smaller than our significance level of 0.05%, there is sufficient evidence to reject the null hypothesis, meaning the slope of our linear model is not zero.
 
 Based on the summary statistics, the r-squared value is 0.7149, meaning that roughly 71.49% of all mpg predictions will be correct using this linear model. Although the model sufficiently predicts the dependent, mpg, variable, the lack of significant variables is evidence of overfitting. Therefore, even though the model performs well with the current dataset, it fails to generalize and predict future data correctly. Again, suggesting that additional variables need to be collected and analyzed. 
+
+SUSPENSION COIL SUMMARY WRITEUP:
+
+Below are the suspension coil summary statistics generated using the "Suspension_Coil" dataset. Refer to MechaCarChallenge.RScript for an additional background as to how the summary statistics table was created. 
+
+Summary Statistics for the Suspension Coil’s Pounds-per-Inch (PSI) Continuous Variable
+Mean: 1499.531 PSI
+Median: 1499.747 PSI
+Variance: 76.235 PSI
+Standard Deviation: 8.731 PSI
+
+Based on the above summary statistics, the dataset is normally distributed. A normal distribution is where values farther from the mean of the dataset are less likely to occur than values closer to the mean. Represented by a bell curve, this is demonstrated by the mean and median being approximately the same value. In this case, 1499.531 PSI and 1499.747 PSI, respectively. Also, the dataset has a small variance of 76.235 PSI, indicating that the data points tend to be close to the mean. For each data point in the dataset, subtract the mean and square the result. Then, calculate the average of the squared differences to compute the variance. Thus, the variance can also be described as how far apart the data is spread out from the average (mean) value.  However, since the variance is no longer in the same unit of measurement as the original data due to taking the square, the square root of the variance can be taken to restore the original unit of measure. This is referred to as the standard deviation. The standard deviation of the suspension coil's PSI is 8.731, again indicating the values tend to be closer to the mean. On the contrary, if a large standard deviation were to be observed, the data points would be spread over a wide range of values.
+
+The design specifications for the MechaCar suspension coils dictate that the variance of the suspension coils must not exceed 100 pounds per inch. To verify the current manufacturing data meet this design specification, look to the standard deviation of 8.731 PSI. Since the data is normally distributed, the values will follow the 68-95-99.7 rule, stating that 68.27%, 95.45%, and 99.73% of the values lie within one, two, and three standard deviations of the mean, respectively. Refer to the ranges of each standard deviation below:
+
+One standard deviation (µ ± σ): 1499.5 ± 8.7 PSI
+Two standard deviations (µ ± 2σ): 1499.5 ± 17.4 PSI
+Three standard deviations (µ ± 3σ): 1499.5 ± 26.1 PSI
+
+Therefore, the current manufacturing data meets the design specification of not exceeding a variance of 100 PSI. Each data point will not exceed ± 26.1 PSI from the mean. 
